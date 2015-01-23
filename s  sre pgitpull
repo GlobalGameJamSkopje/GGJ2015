@@ -1,0 +1,41 @@
+[33mcommit a5c7fa8a3ac77f47f82b46437bd977b1c154e937[m
+Author: Oliver Lazarevski <oliver.lazarevski@gmail.com>
+Date:   Sat Jan 24 00:10:31 2015 +0100
+
+    Creating walls on the levels
+
+[33mcommit ffd52334e70da665d06a9994355fc86d297bdb93[m
+Author: Oliver Lazarevski <oliver.lazarevski@gmail.com>
+Date:   Sat Jan 24 00:09:28 2015 +0100
+
+    Creating walls on the levels
+
+[33mcommit ff9e6b353ba9c325acbb07ac1ea159dac0244037[m
+Author: Oliver Lazarevski <oliver.lazarevski@gmail.com>
+Date:   Fri Jan 23 21:45:33 2015 +0100
+
+    Test Oljo
+
+[33mcommit b4fa6fd6312f70350df4cfe393eb5bb2a39fd5e7[m
+Author: unknown <i.dimcevski@gmail.com>
+Date:   Fri Jan 23 21:39:32 2015 +0100
+
+    camera aspekt ratio + movement
+
+[33mcommit d63da23a84685a959869e1f8fd8506fecfd6e93e[m
+Author: unknown <i.dimcevski@gmail.com>
+Date:   Fri Jan 23 19:44:02 2015 +0100
+
+    init
+
+[33mcommit 6c7effe7c913c2fdea65d4d44868e1a601149fe1[m
+Author: Igor Dimcevski <i.dimcevski@gmail.com>
+Date:   Fri Jan 23 19:40:57 2015 +0100
+
+    Create README.md
+
+[33mcommit e4067af6816b043259e33dd0db9a6f3580378687[m
+Author: Igor Dimcevski <i.dimcevski@gmail.com>
+Date:   Fri Jan 23 19:40:42 2015 +0100
+
+    Create .gitignore
