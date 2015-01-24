@@ -20,6 +20,7 @@ public class StartLevelCollision : MonoBehaviour
         if (other.tag == EndZoneCollider.ToString())
         {
             tCamera.SendMessage("ProceedNextLevel");
+            Destroy(gameObject);
         }
     }
 }

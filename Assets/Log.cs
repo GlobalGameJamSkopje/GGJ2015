@@ -31,3 +31,8 @@ public class Log
         }
     }
 }
+
+public class GeneralData
+{
+    public static bool InGame = false;
+}
