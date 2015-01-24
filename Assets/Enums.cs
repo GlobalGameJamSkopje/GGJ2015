@@ -18,5 +18,7 @@ public enum ColliderTag
     Wall,
     Trigger,
     Portal,
-    EndZone
+    EndZone,
+    StartGame,
+    Instructions
 }

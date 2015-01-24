@@ -36,6 +36,7 @@ public class GeneralData
 {
     public static int Score;
     public static int HighestLevelScored;
+    public static int StageTimer = 90;
 
-    public static bool InGame = true;
+    public static bool InGame = false;
 }

@@ -3,10 +3,6 @@ using System.Collections;
 
 public class ScreenSize : MonoBehaviour
 {
-
-    public GUIText Past;
-    public GUIText Present;
-    public GUIText Future;
     public GUIText Time;
     public GUISkin guiSkin;
     public Rect PastPositionRect;
@@ -17,8 +13,6 @@ public class ScreenSize : MonoBehaviour
     void Start()
     {
         Camera.main.orthographicSize = 16.5f / Screen.width * Screen.height;
-       
-        
     }
 
     void Update()
