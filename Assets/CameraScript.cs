@@ -15,29 +15,12 @@ public class CameraScript : MonoBehaviour
 
     void Start()
     {
-
+        GeneralData.Score = 0;
+        GeneralData.HighestLevelScored = 0;
     }
 
     void Update()
     {
-        //if (Input.GetButtonDown("Fire1"))
-        //{
-        //    startPosition = transform.position;
-        //    endPositionLeft = startPosition + new Vector3(-11, 0, 0);
-        //    endZoomLeft = Camera.main.orthographicSize + 9;
-        //    endZoomLeft1 = Camera.main.orthographicSize;
-        //    rotateLeft = true;
-        //}
-
-        //if (Input.GetButtonDown("Fire2"))
-        //{
-        //    startPosition = transform.position;
-        //    endPositionRight = startPosition + new Vector3(11, 0, 0);
-        //    endZoomRight = Camera.main.orthographicSize+9;
-        //    endZoomRight1 = Camera.main.orthographicSize;
-        //    rotateRight = true;
-        //}
-
         if (transform.position != endPositionLeft && rotateLeft)
         {
             transform.position = Vector3.Lerp(transform.position, endPositionLeft, 10f * Time.deltaTime);

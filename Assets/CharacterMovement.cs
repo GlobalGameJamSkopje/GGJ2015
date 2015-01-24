@@ -20,6 +20,9 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        if (!GeneralData.InGame)
+            return;
+
         if (Input.GetAxis("Vertical") > 0)
             currentDirection = Direction.Top;
         if (Input.GetAxis("Vertical") < 0)

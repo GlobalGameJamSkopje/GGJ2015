@@ -34,5 +34,8 @@ public class Log
 
 public class GeneralData
 {
-    public static bool InGame = false;
+    public static int Score;
+    public static int HighestLevelScored;
+
+    public static bool InGame = true;
 }
