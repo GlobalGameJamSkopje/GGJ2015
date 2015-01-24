@@ -13,39 +13,35 @@ public class CharacterCollision : MonoBehaviour
     {
 
     }
-
+    
     void OnCollisionEnter(Collision collision)
     {
-        var collider = collision.collider;
-
-        Vector3 contactPoint = collision.contacts[0].point;
-        Vector3 center = collider.bounds.center;
-
         bool left = collision.contacts[0].normal == Vector3.right;//contactPoint.x > center.x;
         bool right = collision.contacts[0].normal == Vector3.left;//contactPoint.x < center.x;
         bool bot = collision.contacts[0].normal == Vector3.up;//contactPoint.y > center.y;
         bool top = collision.contacts[0].normal == Vector3.down;//contactPoint.y < center.y;
-        Debug.Log(" left: " + left + " right: " + right + " bot: " + bot + " top: " + top);
-        
+        Log.CharacterCollisionAxes(left, right, bot, top);
+
         if (left)
         {
-            Debug.Log("The object is to the left");
+            Log.CharacterCollisionSide(Direction.Left);
             tCamera.SendMessage("CollisionLeft");
         }
         if (top)
         {
-            Debug.Log("The object is to the top");
+            Log.CharacterCollisionSide(Direction.Top);
             tCamera.SendMessage("CollisionTop");
         }
         if (bot)
         {
-            Debug.Log("The object is to the bot");
+            Log.CharacterCollisionSide(Direction.Bot);
             tCamera.SendMessage("CollisionBot");
         }
         if (right)
         {
-            Debug.Log("The object is to the right");
-            tCamera.SendMessage("CollisionRight");            
+            Log.CharacterCollisionSide(Direction.Right);
+            tCamera.SendMessage("CollisionRight");
         }
     }
+    
 }

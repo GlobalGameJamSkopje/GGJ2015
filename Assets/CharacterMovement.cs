@@ -3,11 +3,11 @@ using System.Collections;
 
 public class CharacterMovement : MonoBehaviour
 {
-
     public GameObject characterPast;
     public GameObject characterPresent;
     public GameObject characterFuture;
 
+    private Direction currentDirection;
     private float moveSpeed = 3f;
     private bool canMoveLeft = true;
     private bool canMoveTop = true;
@@ -20,59 +20,63 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
-        if (false) // ova ako testiras da ti se dvizat vo site nasoki idi so true
+        if (Input.GetAxis("Vertical") > 0)
+            currentDirection = Direction.Top;
+        if (Input.GetAxis("Vertical") < 0)
+            currentDirection = Direction.Bot;
+        if (Input.GetAxis("Horizontal") < 0)
+            currentDirection = Direction.Left;
+        if (Input.GetAxis("Horizontal") > 0)
+            currentDirection = Direction.Right;
+
+        switch (currentDirection)
         {
-            characterPast.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
-            characterFuture.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
-            characterPresent.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
-            characterPast.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
-            characterPresent.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
-            characterFuture.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
-        }
-        else
-        {
-            if (Input.GetAxis("Vertical") > 0) //ide nagore
-            {
+            case Direction.Top:
                 if (canMoveTop)
                 {
                     characterPast.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
                     characterFuture.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
                     characterPresent.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
+                    canMoveRight = true;
+                    canMoveLeft = true;
+                    canMoveBot = true;
                 }
-            }
-            else // ide nadole
-            {
+                break;
+            case Direction.Bot:
                 if (canMoveBot)
                 {
                     characterPast.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
                     characterFuture.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
                     characterPresent.transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
+                    canMoveRight = true;
+                    canMoveLeft = true;
+                    canMoveTop = true;
                 }
-            }
-            if (Input.GetAxis("Horizontal") > 0) //ide desno
-            {
-                if (canMoveRight)
-                {
-                    characterPast.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
-                    characterPresent.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
-                    characterFuture.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
-                }
-            }
-            else // ide levo
-            {
+                break;
+            case Direction.Left:
                 if (canMoveLeft)
                 {
                     characterPast.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
                     characterPresent.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
                     characterFuture.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
+                    canMoveRight = true;
+                    canMoveTop = true;
+                    canMoveBot = true;
                 }
-            }
+                break;
+            case Direction.Right:
+                if (canMoveRight)
+                {
+                    characterPast.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
+                    characterPresent.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
+                    characterFuture.transform.Translate(Vector3.right * Time.deltaTime * Input.GetAxis("Horizontal") * moveSpeed);
+                    canMoveLeft = true;
+                    canMoveTop = true;
+                    canMoveBot = true;
+                }
+                break;
         }
-        //canMoveLeft = true;
-        //canMoveTop = true;
-        //canMoveRight = true;
-        //canMoveBot = true;
-
+        currentDirection = Direction.None;
     }
     public void CollisionLeft()
     {
