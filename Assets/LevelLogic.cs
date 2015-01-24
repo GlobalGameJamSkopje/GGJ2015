@@ -9,7 +9,7 @@ public class LevelLogic : MonoBehaviour
     public GameObject characterFuture;
     public GUIText TimeLeftPanel;
 
-    private float timeLeft = 5;
+    private float timeLeft = 60;
     void Start()
     {
 

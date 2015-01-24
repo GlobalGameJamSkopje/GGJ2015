@@ -18,7 +18,7 @@ public class CharacterMovement : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!GeneralData.InGame)
             return;
@@ -84,17 +84,29 @@ public class CharacterMovement : MonoBehaviour
     public void CollisionLeft()
     {
         canMoveLeft = false;
+        characterPast.transform.Translate(0.05f, 0f,0f);
+        characterFuture.transform.Translate(0.05f, 0f, 0f);
+        characterPresent.transform.Translate(0.05f, 0f, 0f);
     }
     public void CollisionTop()
     {
         canMoveTop = false;
+        characterPast.transform.Translate(0f, -0.05f, 0f);
+        characterFuture.transform.Translate(0f, -0.05f, 0f);
+        characterPresent.transform.Translate(0f, -0.05f, 0f);
     }
     public void CollisionRight()
     {
         canMoveRight = false;
+        characterPast.transform.Translate(-0.05f, 0f, 0f);
+        characterFuture.transform.Translate(-0.05f, 0f, 0f);
+        characterPresent.transform.Translate(-0.05f, 0f, 0f);
     }
     public void CollisionBot()
     {
         canMoveBot = false;
+        characterPast.transform.Translate(0f, 0.05f, 0f);
+        characterFuture.transform.Translate(0f, 0.05f, 0f);
+        characterPresent.transform.Translate(0f, 0.05f, 0f);
     }
 }
