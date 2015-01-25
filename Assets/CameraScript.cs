@@ -6,12 +6,17 @@ public class CameraScript : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 endPositionLeft;
     private Vector3 endPositionRight;
+    private Vector3 endPositionStart;
     private float endZoomRight;
     private float endZoomRight1;
     private float endZoomLeft;
     private float endZoomLeft1;
+    private float endZoomStart;
+    private float endZoomStart1;
     private bool rotateLeft;
     private bool rotateRight;
+    private bool rotateStart;
+    private readonly float DefaultCameraOrthographicSize = 9.3f;
 
     void Start()
     {
@@ -45,10 +50,22 @@ public class CameraScript : MonoBehaviour
             if (transform.position == endPositionRight)
                 rotateRight = false;
         }
+        else if (transform.position != endPositionStart && rotateStart)
+        {
+            transform.position = Vector3.Lerp(transform.position, endPositionStart, 10f * Time.deltaTime);
+
+            if (Mathf.Abs(transform.position.x - endPositionStart.x) >= 5)
+                Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, endZoomStart, 10f * Time.deltaTime);
+            else
+                Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, endZoomStart1, 10f * Time.deltaTime);
+
+            if (transform.position == endPositionStart)
+                rotateStart = false;
+        }
     }
     void CameraMoveLeft()
     {
-        if (rotateLeft || rotateRight)
+        if (isRotating())
             return;
 
         startPosition = transform.position;
@@ -59,7 +76,7 @@ public class CameraScript : MonoBehaviour
     }
     void CameraMoveRight()
     {
-        if (rotateLeft || rotateRight)
+        if (isRotating())
             return;
 
         startPosition = transform.position;
@@ -67,5 +84,21 @@ public class CameraScript : MonoBehaviour
         endZoomRight = Camera.main.orthographicSize + 9;
         endZoomRight1 = Camera.main.orthographicSize;
         rotateRight = true;
+    }
+    void CameraMoveStart()
+    {
+        if (isRotating())
+            return;
+
+        startPosition = transform.position;
+        endPositionStart = new Vector3(11, 0, -10);
+        endZoomStart = DefaultCameraOrthographicSize + 9f;
+        endZoomStart1 = DefaultCameraOrthographicSize;
+        rotateStart = true;
+    }
+
+    private bool isRotating()
+    {
+        return rotateLeft || rotateRight || rotateStart;
     }
 }

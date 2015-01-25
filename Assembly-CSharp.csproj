@@ -51,6 +51,7 @@
      <Compile Include="Assets\CharacterMovement.cs" />
      <Compile Include="Assets\Enums.cs" />
      <Compile Include="Assets\LevelLogic.cs" />
+     <Compile Include="Assets\LeverCollision.cs" />
      <Compile Include="Assets\Log.cs" />
      <Compile Include="Assets\MovableScriptLevel3.cs" />
      <Compile Include="Assets\MovableScriptLevel4.cs" />

@@ -96,6 +96,7 @@ public class LevelLogic : MonoBehaviour
     {
         audio.Stop();
 
+        transform.SendMessage("CameraMoveStart");
         GeneralData.InGame = true;
         GeneralData.Score = 0;
         GeneralData.HighestLevelScored = 0;
