@@ -18,6 +18,8 @@ public class StartLevelCollision : MonoBehaviour
         {
             tCamera.SendMessage("StartGame");
             Destroy(gameObject);
+            tCamera.gameObject.GetComponent<WindowsNames>().enabled = true;
+
         }
     }
 }
