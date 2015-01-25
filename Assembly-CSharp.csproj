@@ -56,10 +56,12 @@
      <Compile Include="Assets\MovableScriptLevel3.cs" />
      <Compile Include="Assets\MovableScriptLevel4.cs" />
      <Compile Include="Assets\MovementScript.cs" />
+     <Compile Include="Assets\PressAnyKey.cs" />
      <Compile Include="Assets\ScreenSize.cs" />
      <Compile Include="Assets\ShapeTransformation.cs" />
      <Compile Include="Assets\StartLevelCollision.cs" />
      <Compile Include="Assets\WindowsName.cs" />
+     <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
