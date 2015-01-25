@@ -13,11 +13,7 @@ public class CharacterMovement : MonoBehaviour
     private bool canMoveTop = true;
     private bool canMoveRight = true;
     private bool canMoveBot = true;
-    void Start()
-    {
-
-    }
-
+    
     void FixedUpdate()
     {
         if (!GeneralData.InGame)

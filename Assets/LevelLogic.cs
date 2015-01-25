@@ -7,6 +7,7 @@ public class LevelLogic : MonoBehaviour
     public GameObject characterPresent;
     public GameObject characterFuture;
     public GUIText TimeLeftPanel;
+    public GUIText ScorePanel;
     public AudioClip[] Audio = new AudioClip[6];
     public GameObject[] StartLevels = new GameObject[5];
 
@@ -15,6 +16,7 @@ public class LevelLogic : MonoBehaviour
 
     void Start()
     {
+        ScorePanel.enabled = false;
         TimeLeftPanel.enabled = false;
         characterPast.SetActive(false);
         characterPresent.SetActive(false);
@@ -32,16 +34,23 @@ public class LevelLogic : MonoBehaviour
                 GameOver();
             }
             TimeLeftPanel.text = "Time Left: " + ((int)timeLeft).ToString();        
-        }      
+        }
+        else
+        {
+            TimeLeftPanel.enabled = false;
+            characterPast.SetActive(false);
+            characterPresent.SetActive(false);
+            characterFuture.SetActive(false);
+        }
     }
     void GameOver()
     {
         audio.Stop();
 
-        Debug.Log("GAMEOVER");
+        ScorePanel.text = string.Format("Highest Level (Score): {0} ({1})", GeneralData.HighestLevelScored, GeneralData.Score);
         GeneralData.InGame = false;
         TimeLeftPanel.enabled = false;
-        
+        ScorePanel.enabled = true;
     }
     
     void ProceedNextLevel()
@@ -49,12 +58,10 @@ public class LevelLogic : MonoBehaviour
         audio.Stop();
 
         transform.SendMessage("CameraMoveRight");
-        ResetTimer();
         GeneralData.Score += (int)timeLeft;
         GeneralData.HighestLevelScored++;
         currentLevel++;
-        StartLevels[currentLevel].collider.enabled = true;
-        StartLevels[currentLevel].collider.isTrigger = true;
+        ResetTimer();
 
         if (!characterPast.activeInHierarchy)
             characterPast.SetActive(true);
@@ -63,8 +70,22 @@ public class LevelLogic : MonoBehaviour
         characterPresent.transform.Translate(11, 0, 0);
         characterFuture.transform.Translate(11, 0, 0);
 
-        audio.clip = Audio[currentLevel+1];
-        audio.Play();
+        if (currentLevel == 5)
+        {
+            // tuka ja svrte
+            TimeLeftPanel.enabled = true;
+            ScorePanel.text = string.Format("Highest Level (Score): {0} ({1})", GeneralData.HighestLevelScored, GeneralData.Score);
+            ScorePanel.enabled = true;
+            GeneralData.InGame = false;            
+        }
+        else
+        {
+            StartLevels[currentLevel].collider.enabled = true;
+            StartLevels[currentLevel].collider.isTrigger = true;
+
+            audio.clip = Audio[currentLevel + 1];
+            audio.Play();
+        }        
     }
     void ResetTimer()
     {

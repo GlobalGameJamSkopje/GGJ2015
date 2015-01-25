@@ -4,15 +4,6 @@ using System.Collections;
 public class CharacterCollision : MonoBehaviour
 {
     public GameObject tCamera;
-    void Start()
-    {
-
-    }
-
-    void Update()
-    {
-
-    }
     
     void OnCollisionEnter(Collision collision)
     {

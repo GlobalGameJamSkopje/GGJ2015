@@ -6,9 +6,7 @@ public class MovableScriptLevel3 : MonoBehaviour
 
     public GameObject CharacterPast;
     private bool isMoved = false;
-    void Start () {
-	}
-	
+    
     void OnCollisionEnter(Collision collision)
     {
         if (!isMoved)

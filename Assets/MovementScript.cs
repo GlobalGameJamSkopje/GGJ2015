@@ -6,10 +6,6 @@ public class MovementScript : MonoBehaviour
 
     private float moveSpeed = 3f;
 
-    void Start()
-    {
-    }
-
     void Update()
     {
         transform.Translate(Vector3.up * Time.deltaTime * Input.GetAxis("Vertical") * moveSpeed);
