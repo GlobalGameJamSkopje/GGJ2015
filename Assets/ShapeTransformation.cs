@@ -6,7 +6,6 @@ public class ShapeTransformation : MonoBehaviour {
     public ColliderTag ToShape;
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ShapeTransformation");
         CharacterPresent.tag = ToShape.ToString();
         Destroy(gameObject);
     }

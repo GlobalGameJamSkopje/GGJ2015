@@ -1,22 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WindowsNames : MonoBehaviour {
-
+public class WindowsName : MonoBehaviour {
+    
     public GUISkin guiSkin;
     public Rect PastPositionRect;
     public Rect PresentPositionRect;
     public Rect FuturePositionRect;
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void OnGUI()
     {
