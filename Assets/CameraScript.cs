@@ -36,7 +36,10 @@ public class CameraScript : MonoBehaviour
                 Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, endZoomLeft1, 10f * Time.deltaTime);
 
             if (transform.position == endPositionLeft)
+            {
                 rotateLeft = false;
+                Camera.main.orthographicSize = 16.5f / Screen.width * Screen.height;
+            }                
         }
         else if (transform.position != endPositionRight && rotateRight)
         {
@@ -48,7 +51,10 @@ public class CameraScript : MonoBehaviour
                 Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, endZoomRight1, 10f * Time.deltaTime);
 
             if (transform.position == endPositionRight)
+            {
                 rotateRight = false;
+                Camera.main.orthographicSize = 16.5f / Screen.width * Screen.height;
+            }                
         }
         else if (transform.position != endPositionStart && rotateStart)
         {
@@ -60,7 +66,10 @@ public class CameraScript : MonoBehaviour
                 Camera.main.orthographicSize = Mathf.Lerp(Camera.main.orthographicSize, endZoomStart1, 10f * Time.deltaTime);
 
             if (transform.position == endPositionStart)
+            {
                 rotateStart = false;
+                Camera.main.orthographicSize = 16.5f / Screen.width * Screen.height;
+            }                
         }
     }
     void CameraMoveLeft()

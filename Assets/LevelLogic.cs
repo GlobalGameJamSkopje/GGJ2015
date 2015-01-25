@@ -70,6 +70,11 @@ public class LevelLogic : MonoBehaviour
         characterPresent.transform.Translate(11, 0, 0);
         characterFuture.transform.Translate(11, 0, 0);
 
+        if (currentLevel == 4)
+        {
+            if (characterFuture.activeInHierarchy)
+                characterFuture.SetActive(false);
+        }
         if (currentLevel == 5)
         {
             // tuka ja svrte
